@@ -1,5 +1,6 @@
 import Collection from "@/components/Collection";
 import Deals from "@/components/Deals";
+import Footer from "@/components/Footer";
 import Furniture from "@/components/Furniture";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -15,6 +16,7 @@ const Home = () => {
       <Furniture />
       <Deals />
       <Newsletter />
+      <Footer />
     </>
   );
 };
