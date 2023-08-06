@@ -1,3 +1,4 @@
+import Collection from "@/components/Collection";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import React from "react";
@@ -7,6 +8,7 @@ const Home = () => {
     <>
       <Header />
       <Hero />
+      <Collection />
     </>
   );
 };
