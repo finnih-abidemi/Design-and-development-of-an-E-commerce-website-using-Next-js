@@ -3,6 +3,7 @@ import Deals from "@/components/Deals";
 import Furniture from "@/components/Furniture";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Newsletter from "@/components/Newsletter";
 import React from "react";
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
       <Collection />
       <Furniture />
       <Deals />
+      <Newsletter />
     </>
   );
 };
