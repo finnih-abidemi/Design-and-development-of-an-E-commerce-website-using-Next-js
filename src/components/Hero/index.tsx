@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Hero = () => {
   return (
-    <div className='container mt-10'>
+    <div className='container mt-[80px]'>
         <main className='flex gap-10 items-center justify-center px-[100px]'>
             <div className="flex flex-col gap-5 max-w-[50%]">
                 <Biscuit text='Transform Your Home with Timeless Furniture' subText='Discover Elegance and Comfort in Every Piece' />
