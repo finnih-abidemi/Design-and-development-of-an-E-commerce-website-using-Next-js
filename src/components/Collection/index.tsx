@@ -50,7 +50,7 @@ const Collection = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between mt-0 md:mt-8">
+      <div className="flex justify-between mt-3 md:mt-8">
         <div className="flex gap-3">
           <Image src="/ship.svg" width={25} height={25} alt="ship" />
           <div className="text-left flex items-center md:flex-col flex-row md:items-start">

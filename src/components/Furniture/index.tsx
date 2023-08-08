@@ -151,7 +151,7 @@ const Furniture = () => {
       <main className="w-full">
         <>
         {visualizeContent({ title: "Furniture" })}
-        <button className="bg-gray-100 text-gray-700 w-full py-2 hover:bg-gray-200 mb-[150px] mt-[40px]">See all</button>
+        <button className="bg-gray-100 text-gray-700 w-full py-2 font-medium hover:bg-gray-200 mb-[150px] mt-[40px]">See all</button>
         </>
         <>
         {visualizeContent({ title: "Accessories" })}

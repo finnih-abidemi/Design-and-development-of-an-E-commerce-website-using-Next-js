@@ -9,7 +9,7 @@ const Deals = () => {
         <main className='flex md:flex-row flex-col gap-10 items-center justify-center'>
             <div className="flex flex-col gap-8 md:max-w-[50%]">
                 <Biscuit text='Deals of the day' subText='Celebrate the holidays in style with our special deals on home decor and furniture. Transform your place into a winter wonderland without stretching your budget.' />
-                <div className="flex gap-6">
+                <div className="flex justify-between md:justify-start md:gap-6">
                     <div className="flex flex-col bg-white py-4 px-5 rounded-md text-center gap-3">
                         <span className='font-bold text-[24px]'>24</span>
                         <small className='text-[15px]'>Days</small>
