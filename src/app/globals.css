@@ -30,4 +30,7 @@
 body {
   color: gray;
   background: white;
+  /* margin: 0 auto;
+  width: -moz-fit-content;
+  width: fit-content; */
 }

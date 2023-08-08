@@ -40,7 +40,7 @@ const Furniture = () => {
         return products.map((product: any) => {
           console.log(product);
           return (
-            <div className="flex flex-col gap-4" key={product}>
+            <div className="flex flex-col gap-4 w-full" key={product}>
               <div className="bg-gray-100 rounded-lg w-full flex items-center justify-center flex-col py-4 pb-6 overflow-hidden shadow-md hover:shadow-lg cursor-pointer">
                 <Image
                   src={product.imagePath}
@@ -84,7 +84,7 @@ const Furniture = () => {
     <div className="">
       <div className="flex justify-between items-center">
         <h1 className="text-[20px] font-medium text-gray-700">{title}</h1>
-        <div className="">
+        <div className="invisible md:visible">
           <ul className="listed flex w-fit items-center justify-center gap-3 rounded-3xl px-5 py-2">
             <li
               onClick={() => handleItemClick(0)}
@@ -140,14 +140,14 @@ const Furniture = () => {
         </div>
       </div>
       {selectedItem !== null && (
-        <div className="mt-6 grid grid-cols-4 gap-10 justify-between">
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 justify-between">
           {getContent(selectedItem)}
         </div>
       )}
     </div>
   );
   return (
-    <div className="container my-10 pt-10">
+    <div className="container md:my-10 md:pt-10 px-[30px] md:px-0">
       <main className="w-full">
         <>
         {visualizeContent({ title: "Furniture" })}

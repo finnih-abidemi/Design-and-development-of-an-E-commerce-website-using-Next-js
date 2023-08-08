@@ -3,9 +3,9 @@ import Image from 'next/image'
 
 const Header = () => {
   return (
-    <nav className='flex px-10 h-[80px] bg-[whitesmoke] shadow-lg  w-full items-center justify-between fixed top-0 left-0 z-10'>
+    <nav className='flex md:px-10 h-[80px] bg-[whitesmoke] shadow-lg  w-full items-center justify-between fixed top-0 left-0 z-10'>
         <Image src='/logo_first.png' width={100} height={100} alt="logo"/>
-        <div className="flex gap-1 ">
+        <div className="flex gap-1 invisible md:visible">
             <div className="relative mr-3">
             <Image src={'/search.svg'} width={20} height={20} alt="search" className='absolute right-[20px] top-[25%] cursor-pointer'/>
             <input type="text" placeholder='What are you looking for...' className='border w-[400px] rounded-md border-gray-400 px-3 py-2 text-sm focus:outline-none' />

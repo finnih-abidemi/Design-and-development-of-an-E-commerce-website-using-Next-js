@@ -8,8 +8,8 @@ type BiscuitProps = {
 const Biscuit = ({ text, subText}: BiscuitProps) => {
   return (
     <div>
-      <h1 className='text-[42px] text-gray-800 font-bold'>{text}</h1>
-      <p className='text-gray-400'>{subText}</p>
+      <h1 className='md:text-[42px] text-[28px] text-gray-800 font-bold leading-none md:leading-[50px] mb-2'>{text}</h1>
+      <p className='text-gray-400 text-[14px] md:text-[16px]'>{subText}</p>
     </div>
   );
 };

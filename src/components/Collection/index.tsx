@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const Collection = () => {
   return (
-    <div className="container text-center mt-[100px] py-10">
+    <div className="container text-center mt-10 md:mt-[100px] py-10 px-[30px] md:px-0">
       <Biscuit text="Collection" subText="" />
-      <div className="flex gap-20 h-[400px] mt-10">
+      <div className="flex gap-20 flex-col md:flex-row h-[400px] md:mt-10">
         <div className="bg-gray-100 rounded-lg w-full flex items-center justify-center relative overflow-hidden shadow-md hover:shadow-lg">
           <Image
             src="/chair.png"
@@ -50,30 +50,30 @@ const Collection = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-between mt-0 md:mt-8">
         <div className="flex gap-3">
           <Image src="/ship.svg" width={25} height={25} alt="ship" />
-          <div className="text-left">
-            <h1 className="font-medium text-[14px] text-gray-700">FREE SHIPPING</h1>
-            <p className="text-[12px]">
+          <div className="text-left flex items-center md:flex-col flex-row md:items-start">
+            <h1 className="font-medium text-[10px] md:text-[14px] text-gray-700">FREE SHIPPING</h1>
+            <p className="md:text-[12px] invisible md:visible">
               Free shipping on all US order or order above $99
             </p>
           </div>
         </div>
         <div className="flex gap-3">
           <Image src="/refresh.svg" width={25} height={25} alt="ship" />
-          <div className="text-left">
-            <h1 className="font-medium text-[14px] text-gray-700">30 DAYS RETURN</h1>
-            <p className="text-[12px]">
+          <div className="text-left flex items-center md:flex-col flex-row md:items-start">
+            <h1 className="font-medium text-[10px] md:text-[14px] text-gray-700">30 DAYS RETURN</h1>
+            <p className="md:text-[12px] invisible md:visible">
              Simply return it within 30 days for an exchange
             </p>
           </div>
         </div>
         <div className="flex gap-3">
           <Image src="/support.svg" width={25} height={25} alt="ship" />
-          <div className="text-left">
-            <h1 className="font-medium text-[14px] text-gray-700">SUPPORT 24/7</h1>
-            <p className="text-[12px]">
+          <div className="text-left flex items-center md:flex-col flex-row md:items-start">
+            <h1 className="font-medium text-[10px] md:text-[14px] text-gray-700">SUPPORT 24/7</h1>
+            <p className="md:text-[12px] invisible md:visible">
               Contact us 24 hours a day, 7 days a week
             </p>
           </div>
