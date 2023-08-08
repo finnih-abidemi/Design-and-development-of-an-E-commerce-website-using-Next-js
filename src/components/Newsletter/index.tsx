@@ -14,7 +14,7 @@ const Newsletter = () => {
           <input
             type="text"
             placeholder="Enter your email address"
-            className="border border-gray-400 px-4 py-3 rounded-md w-[50%]"
+            className="border border-gray-400 px-4 py-3 rounded-md md:w-[50%]"
           />
           <button className="bg-gray-700 text-white px-4 py-3 rounded-md hover:bg-gray-500">
             Subscribe

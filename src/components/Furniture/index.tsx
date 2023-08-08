@@ -83,12 +83,12 @@ const Furniture = () => {
   const visualizeContent = ({ title }: any) => (
     <div className="">
       <div className="flex justify-between items-center">
-        <h1 className="text-[20px] font-medium text-gray-700">{title}</h1>
+        <h1 className="text-[20px] font-bold text-gray-700">{title}</h1>
         <div className="invisible md:visible">
           <ul className="listed flex w-fit items-center justify-center gap-3 rounded-3xl px-5 py-2">
             <li
               onClick={() => handleItemClick(0)}
-              className={` flex cursor-pointer items-center px-4 text-[0.9rem] text-lg font-medium text-gray-400 hover:text-gray-700 ${
+              className={` flex cursor-pointer items-center px-4 text-[14px] font-medium text-gray-400 hover:text-gray-700 ${
                 selectedItem === 0
                   ? "rounded-3xl bg-white py-2 text-gray-700"
                   : ""
@@ -98,7 +98,7 @@ const Furniture = () => {
             </li>
             <li
               onClick={() => handleItemClick(1)}
-              className={` flex cursor-pointer items-center px-4 text-[0.9rem] text-lg font-medium text-gray-400 hover:text-gray-700 ${
+              className={` flex cursor-pointer items-center px-4 text-[14px] font-medium text-gray-400 hover:text-gray-700 ${
                 selectedItem === 1
                   ? "rounded-3xl bg-white py-2 text-gray-700"
                   : ""
@@ -108,7 +108,7 @@ const Furniture = () => {
             </li>
             <li
               onClick={() => handleItemClick(2)}
-              className={` flex cursor-pointer items-center px-4 text-[0.9rem] text-lg font-medium text-gray-400 hover:text-gray-700 ${
+              className={` flex cursor-pointer items-center px-4 text-[14px] font-medium text-gray-400 hover:text-gray-700 ${
                 selectedItem === 2
                   ? "rounded-3xl bg-white py-2 text-gray-700"
                   : ""
@@ -118,7 +118,7 @@ const Furniture = () => {
             </li>
             <li
               onClick={() => handleItemClick(3)}
-              className={` flex cursor-pointer items-center px-4 text-[0.9rem] text-lg font-medium text-gray-400 hover:text-gray-700 ${
+              className={` flex cursor-pointer items-center px-4 text-[14px] font-medium text-gray-400 hover:text-gray-700 ${
                 selectedItem === 3
                   ? "rounded-3xl bg-white py-2 text-gray-700"
                   : ""
@@ -128,7 +128,7 @@ const Furniture = () => {
             </li>
             <li
               onClick={() => handleItemClick(4)}
-              className={` flex cursor-pointer items-center px-4 text-[0.9rem] text-lg font-medium text-gray-400 hover:text-gray-700 ${
+              className={` flex cursor-pointer items-center px-4 text-[14px] font-medium text-gray-400 hover:text-gray-700 ${
                 selectedItem === 4
                   ? "rounded-3xl bg-white py-2 text-gray-700"
                   : ""
