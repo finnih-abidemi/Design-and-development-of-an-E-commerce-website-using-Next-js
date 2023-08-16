@@ -10,7 +10,7 @@ const Header = () => {
     }
   return (
     <nav className='flex md:px-10 h-[80px] bg-[whitesmoke] shadow-lg  w-full items-center justify-between fixed top-0 left-0 z-[1000]'>
-        <Image src='/logo_first.png' width={100} height={100} alt="logo" onClick={() => push("/")}/>
+        <Image src='/logo_first.png' width={100} height={100} alt="logo" onClick={() => push("/")} className='cursor-pointer'/>
         <div className="flex gap-1 invisible md:visible">
             <div className="relative mr-3">
             <Image src={'/search.svg'} width={20} height={20} alt="search" className='absolute right-[20px] top-[25%] cursor-pointer'/>
