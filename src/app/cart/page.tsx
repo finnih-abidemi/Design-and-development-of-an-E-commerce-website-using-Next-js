@@ -51,7 +51,7 @@ const Cart = () => {
                 <p className="text-[14px] font-medium text-gray-400">Total</p>
                 <p className="text-[14px] font-medium text-gray-500">$ 300</p>
               </div>
-              <button className="mt-5 bg-gray-700 text-white hover:bg-gray-500 rounded-lg py-3 text-center w-full">Checkout</button>
+              <button className="mt-5 bg-gray-700 text-white hover:bg-gray-500 rounded-lg py-3 text-center w-full" onClick={() => push("/checkout")}>Checkout</button>
               </div>
             </div>
           </div>
