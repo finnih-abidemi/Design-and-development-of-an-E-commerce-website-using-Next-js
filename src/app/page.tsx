@@ -10,7 +10,6 @@ import React from "react";
 const Home = () => {
   return (
     <>
-      <Header />
       <Hero />
       <Collection />
       <Furniture />
