@@ -43,7 +43,7 @@ const Furniture = ({title, data}) => {
         return products.map((product: any) => {
           return (
             <div className="flex flex-col gap-4 w-full" key={product} onClick={() => push(`/product/${data}/${product.id}`) }>
-              <div className="bg-gray-100 rounded-lg w-full flex items-center justify-center flex-col py-4 pb-6 overflow-hidden shadow-md hover:shadow-lg cursor-pointer">
+              <div className="bg-[#f4f2f2] rounded-lg w-full flex items-center justify-center flex-col py-4 pb-6 overflow-hidden shadow-md hover:shadow-lg cursor-pointer">
                 <Image
                   src={product.imagePath}
                   alt="product"

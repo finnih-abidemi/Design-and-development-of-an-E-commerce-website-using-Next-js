@@ -9,9 +9,10 @@ interface UserContextType {
 export const UserContext = createContext(null);
 
 export const UserProvider: any = ({ children }: any) => {
-  const [user, setUser] = useState<any>(null); // Replace `any` with the actual type of `user` if possible
+  const [user, setUser] = useState<any>(null); 
+  const [cartItem, setCartItem] = useState<any>(null);
 
-  const pass_value = {user, setUser}
+  const pass_value = {user, setUser, cartItem, setCartItem}
   return (
     <UserContext.Provider value={pass_value}>
       {children}
