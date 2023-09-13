@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Elegant Evening Dress",
+    "colors": ["Black", "Red", "Navy Blue"],
+    "sizes": ["S", "M", "L", "XL"],
+    "price": 149.99,
+    "rating": 4.6,
+    "imagePath": "/women/first.svg",
+    "materials": ["Polyester", "Spandex"]
+  },
+  {
+    "id": 2,
+    "name": "Casual Summer Blouse",
+    "colors": ["White", "Blue Stripes", "Pink"],
+    "sizes": ["S", "M", "L"],
+    "price": 39.99,
+    "rating": 4.2,
+    "imagePath": "/women/second.svg",
+    "materials": ["Cotton"]
+  },
+  {
+    "id": 3,
+    "name": "Classic Trench Coat",
+    "colors": ["Beige", "Navy Blue", "Khaki"],
+    "sizes": ["S", "M", "L", "XL"],
+    "price": 129.99,
+    "rating": 4.5,
+    "imagePath": "/women/third.svg",
+    "materials": ["Cotton", "Polyester"]
+  },
+  {
+    "id": 4,
+    "name": "Denim Skinny Jeans",
+    "colors": ["Blue", "Black"],
+    "sizes": ["26W x 30L", "28W x 32L", "30W x 32L", "32W x 34L"],
+    "price": 69.99,
+    "rating": 4.3,
+    "imagePath": "/women/fourth.svg",
+    "materials": ["Denim"]
+  },
+  {
+    "id": 5,
+    "name": "Fashionable Sun Hat",
+    "colors": ["Beige", "Black", "Brown"],
+    "sizes": ["One Size"],
+    "price": 19.99,
+    "rating": 4.1,
+    "imagePath": "/women/fifth.svg",
+    "materials": ["Straw"]
+  },
+  {
+    "id": 6,
+    "name": "Comfortable Sandals",
+    "colors": ["Brown", "Black", "White"],
+    "sizes": ["5", "6", "7", "8", "9"],
+    "price": 49.99,
+    "rating": 4.4,
+    "imagePath": "/women/sixth.svg",
+    "materials": ["Leather"]
+  },
+  {
+    "id": 7,
+    "name": "Chic Handbag",
+    "colors": ["Red", "Black", "Beige"],
+    "sizes": ["One Size"],
+    "price": 59.99,
+    "rating": 4.2,
+    "imagePath": "/women/seventh.svg",
+    "materials": ["Leather"]
+  },
+  {
+    "id": 8,
+    "name": "Statement Necklace",
+    "colors": ["Gold", "Silver", "Rose Gold"],
+    "sizes": ["One Size"],
+    "price": 29.99,
+    "rating": 4.7,
+    "imagePath": "/women/eight.svg",
+    "materials": ["Metal"]
+  }
+]

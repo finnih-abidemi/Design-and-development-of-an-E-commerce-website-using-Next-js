@@ -1,18 +1,21 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const Furniture = () => {
+const Furniture = ({title, data}) => {
   const [selectedItem, setSelectedItem] = React.useState(0);
   const [products, setProducts] = React.useState([]);
 
+  const {push} = useRouter();
+  
   const handleItemClick = (index: any) => {
     setSelectedItem(index);
   };
 
   React.useEffect(() => {
     const getProduct = async () => {
-      const response = await fetch("/furniture_product.json");
+      const response = await fetch(`/${data}.json`);
       const products = await response.json();
       setProducts(products);
     };
@@ -38,9 +41,8 @@ const Furniture = () => {
     switch (index) {
       case 0:
         return products.map((product: any) => {
-          console.log(product);
           return (
-            <div className="flex flex-col gap-4 w-full" key={product}>
+            <div className="flex flex-col gap-4 w-full" key={product} onClick={() => push(`/product/${data}/${product.id}`) }>
               <div className="bg-gray-100 rounded-lg w-full flex items-center justify-center flex-col py-4 pb-6 overflow-hidden shadow-md hover:shadow-lg cursor-pointer">
                 <Image
                   src={product.imagePath}
@@ -80,7 +82,7 @@ const Furniture = () => {
     }
   };
 
-  const visualizeContent = ({ title }: any) => (
+  const visualizeContent = () => (
     <div className="">
       <div className="flex justify-between items-center">
         <h1 className="text-[20px] font-bold text-gray-700">{title}</h1>
@@ -150,12 +152,8 @@ const Furniture = () => {
     <div className="container md:my-10 md:pt-10 px-[30px] md:px-0">
       <main className="w-full">
         <>
-        {visualizeContent({ title: "Furniture" })}
+        {visualizeContent()}
         <button className="bg-gray-100 text-gray-700 w-full py-2 font-medium hover:bg-gray-200 mb-[150px] mt-[40px]">See all</button>
-        </>
-        <>
-        {visualizeContent({ title: "Accessories" })}
-        <button className="bg-gray-100 text-gray-700 w-full py-2 hover:bg-gray-200 mb-[150px] mt-[40px]">See all</button>
         </>
       </main>
     </div>

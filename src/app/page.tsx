@@ -12,7 +12,10 @@ const Home = () => {
     <>
       <Hero />
       <Collection />
-      <Furniture />
+      <Furniture  title={"Furniture"} data={"furniture"}/>
+      {/* <Furniture  title={"Accessories"} data={"furniture"}/> */}
+      <Furniture  title={"Women's"} data={"women"} />
+      <Furniture  title={"Men's"} data={"men"} />
       <Deals />
       <Newsletter />
       <Footer />
