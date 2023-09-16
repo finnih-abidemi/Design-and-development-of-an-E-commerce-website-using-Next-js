@@ -13,7 +13,7 @@ export const authOptions = {
     secret: process.env.SECRET,
     callbacks: {
       async signIn({ user, account, profile }) {
-        const response = await axios.get(`https://prompteasy.co/api/user?email=${profile.email}`,
+        const response = await axios.get(`https://e-commerce-product-visualization-using-augmented-reality.vercel.app/api/user?email=${profile.email}`,
         );
         if(response.data.message !== "User not found"){
           return true;
@@ -26,7 +26,7 @@ export const authOptions = {
             password: profile.at_hash,
             avatar: profile.picture,
           };
-          const response = await axios.post("https://prompteasy.co/api/user",
+          const response = await axios.post("https://e-commerce-product-visualization-using-augmented-reality.vercel.app/api/user",
             data
           );
           if (response.status !== 201) {

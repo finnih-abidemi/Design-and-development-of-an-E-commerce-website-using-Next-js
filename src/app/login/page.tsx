@@ -1,58 +1,55 @@
-'use client';
+"use client";
 
 import Link from "next/link";
-import {signIn} from "next-auth/react";
-import { useState } from "react";
-import axios from "axios"
-import {ButtonLoading} from "@/components/Loading";
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { signIn } from "next-auth/react";
+import { useState, useContext } from "react";
+import axios from "axios";
+import { ButtonLoading } from "@/components/Loading";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-
-
+import { UserContext } from "@/context/context";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const {push } = useRouter() 
+  const { push } = useRouter();
 
+  const { setUser } = useContext(UserContext);
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    if(email === "" || password === ""){
+    if (email === "" || password === "") {
       setError(true);
-      return
+      return;
     }
-    setLoading(true)
+    setLoading(true);
 
-    try{
-      const response = await axios.post(`/api/login`, {email, password})
-        
-        if (response.status === 200) {
-          console.log(response.data)
-          localStorage.setItem('Prompt_easy_user', JSON.stringify(response.data))
-          setLoading(false)
-          toast.success('Sign in successful!');
-          
-          setTimeout(() => {
-            push("/profile");
-          }, 1000);
+    try {
+      const response = await axios.post(`/api/login`, { email, password });
+
+      if (response.status === 200) {
+        console.log(response.data);
+        setUser(response.data);
+        setLoading(false);
+        toast.success("Sign in successful!");
+
+        setTimeout(() => {
+          push("/profile");
+        }, 1000);
       }
-      
     } catch (error) {
-      toast.error('Login failed!');
-      console.log(error)
-      setLoading(false)
+      toast.error("Login failed!");
+      console.log(error);
+      setLoading(false);
     }
-
-  }
-
+  };
 
   return (
     <>
-    <ToastContainer/>
+      <ToastContainer />
       <section className="relative z-10 overflow-hidden pt-36 pb-16 md:pb-20 lg:pt-[180px] lg:pb-28">
         <div className="container ">
           <div className="-mx-4 flex flex-wrap">
@@ -64,7 +61,14 @@ const Login = () => {
                 <p className="mb-11 text-center text-base font-medium text-body-color">
                   Login to your account for a faster checkout.
                 </p>
-                <button onClick={() => signIn('google', { callbackUrl: 'https://prompteasy.co/dashboard' })} className="mb-6 flex w-full items-center justify-center rounded-md bg-white p-3 text-base font-medium text-body-color shadow-one hover:text-blue-500">
+                <button
+                  onClick={() =>
+                    signIn("google", {
+                      callbackUrl: "https://e-commerce-product-visualization-using-augmented-reality.vercel.app/",
+                    })
+                  }
+                  className="mb-6 flex w-full items-center justify-center rounded-md bg-white p-3 text-base font-medium text-body-color shadow-one hover:text-blue-500"
+                >
                   <span className="mr-3">
                     <svg
                       width="20"
@@ -121,11 +125,17 @@ const Login = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your Email"
-                      className={`w-full rounded-md border ${error && email === "" ? "border-[#e94949]" : "border-transparent"} py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none`}
+                      className={`w-full rounded-md border ${
+                        error && email === ""
+                          ? "border-[#e94949]"
+                          : "border-transparent"
+                      } py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none`}
                     />
-                    {
-                      error && email === "" && <p className="text-[#e94949] text-[13px] mt-1 ml-3">Email is required</p>
-                    }
+                    {error && email === "" && (
+                      <p className="text-[#e94949] text-[13px] mt-1 ml-3">
+                        Email is required
+                      </p>
+                    )}
                   </div>
                   <div className="mb-8">
                     <label
@@ -140,11 +150,17 @@ const Login = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Enter your Password"
-                      className={`w-full rounded-md border ${error && password === "" ? "border-[#e94949]" : "border-transparent"} py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none`}
+                      className={`w-full rounded-md border ${
+                        error && password === ""
+                          ? "border-[#e94949]"
+                          : "border-transparent"
+                      } py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none`}
                     />
-                   {
-                      error && password === "" && <p className="text-[#e94949] text-[13px] mt-1 ml-3">Password is required</p>
-                    }
+                    {error && password === "" && (
+                      <p className="text-[#e94949] text-[13px] mt-1 ml-3">
+                        Password is required
+                      </p>
+                    )}
                   </div>
                   <div className="mb-8 flex flex-col justify-between sm:flex-row sm:items-center">
                     <div className="mb-4 sm:mb-0">
@@ -190,20 +206,29 @@ const Login = () => {
                     </div>
                   </div>
                   <div className="mb-6">
-                   {
-                      loading ? 
-                      <button disabled className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
-                      <ButtonLoading /> {""}
-                    </button> :
-                     <button onClick={handleLogin} className="flex w-full items-center justify-center rounded-md bg-blue-700 py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
-                     Sign in
-                   </button>
-                   }
+                    {loading ? (
+                      <button
+                        disabled
+                        className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
+                      >
+                        <ButtonLoading /> {""}
+                      </button>
+                    ) : (
+                      <button
+                        onClick={handleLogin}
+                        className="flex w-full items-center justify-center rounded-md bg-blue-700 py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
+                      >
+                        Sign in
+                      </button>
+                    )}
                   </div>
                 </form>
                 <p className="text-center text-sm font-normal text-body-color">
                   Don’t you have an account?
-                  <Link href="/signup" className="text-primary ml-3 text-blue-700 hover:underline">
+                  <Link
+                    href="/signup"
+                    className="text-primary ml-3 text-blue-700 hover:underline"
+                  >
                     Sign up
                   </Link>
                 </p>

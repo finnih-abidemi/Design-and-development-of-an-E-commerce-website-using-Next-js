@@ -1,10 +1,12 @@
 "use client";
 import { Loading } from "@/components/Loading";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Header from "@/components/Header"
 import {  usePathname } from "next/navigation";
+import { UserContext } from "@/context/context";
+
 
 export default function Page({ params }: { params: { productId: string } }) {
   const [product, setProduct] = useState<{
@@ -15,8 +17,12 @@ export default function Page({ params }: { params: { productId: string } }) {
   } | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>("S");
 
+  const { cartItem, setCartItem } = useContext(UserContext);
+
   const pathname = usePathname();
   const pathSegments = pathname.split('/');
+
+  console.log(cartItem);
 
 
   const lastSegment = pathSegments[pathSegments.length - 1];
@@ -52,19 +58,15 @@ export default function Page({ params }: { params: { productId: string } }) {
       {letter}
     </div>
   );
+
+  const handleCart = () => {
+    const newCartItem = [...cartItem];
+    newCartItem.push(product);
+    setCartItem(newCartItem);
+  }
   return (
     <div>
       <Header />
-      {/* {product !? ( 
-        <div>
-          <h2>{product.name}</h2>
-          <p>Price: ${product.price}</p>
-          <Image src={product.image} alt={product.name} />
-          <p>{product.description}</p>
-        </div>
-      ) : (
-        <Loading />
-      )} */}
       <>
         <main className="mt-[80px]">
           <section className=" px-10 w-full bg-gray-100 pt-6 h-[100px] text-center ">
@@ -114,7 +116,7 @@ export default function Page({ params }: { params: { productId: string } }) {
                 <p className="font-bold text-[18px] text-black">
                   $ <span>{product.price}</span>
                 </p>
-                <button className="px-3 py-2 rounded-md bg-gray-700 text-white text-[14px] font-light hover:bg-gray-500">
+                <button onClick={handleCart} className="px-3 py-2 rounded-md bg-gray-700 text-white text-[14px] font-light hover:bg-gray-500">
                   ADD TO CART{" "}
                 </button>
                 <Image src="/love.svg" alt="star" width={20} height={20} className=" hover:bg-gray-100 cursor-pointer"/>

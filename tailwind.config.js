@@ -16,8 +16,8 @@ module.exports = {
         center: true,
         padding: {
           DEFAULT: '1rem',
-          lg: '2rem', // Large screens padding
-          xl: '3rem', // Extra-large screens padding
+          lg: '2rem', 
+          xl: '3rem',
         },
         screens: {
           sm: '100%',

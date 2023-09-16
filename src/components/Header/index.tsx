@@ -1,9 +1,11 @@
 "use client"
-import React from 'react'
+import React, {useContext} from 'react'
 import Image from 'next/image'
 import {useRouter} from 'next/navigation'
+import { UserContext } from '@/context/context'
 
 const Header = () => {
+    const {cartItem} = useContext(UserContext);
     const {push } = useRouter() 
     const handleLogin = () => {
         push("/login")
@@ -24,9 +26,16 @@ const Header = () => {
                 <Image src={'/help.svg'} width={20} height={20} alt="cart" />
                 <p className='text-[14px]'>Help</p>
             </div> */}
-            <div className="flex gap-2 items-center hover:bg-gray-200 rounded-md cursor-pointer px-3"  onClick={() => push("/cart")}>
+            <div className="flex relative gap-2 items-center hover:bg-gray-200 rounded-md cursor-pointer px-3"  onClick={() => push("/cart")}>
                 <Image src={'/cart.svg'} width={20} height={20} alt="cart" />
                 <p className='text-[14px]'>Cart</p>
+                {
+                    cartItem.length > 0 && (
+                        <div className="absolute -right-2 top-[-5px] bg-red-500 rounded-full w-[20px] h-[20px] flex justify-center items-center">
+                            <p className='text-[12px] text-white'>{cartItem.length}</p>
+                        </div>
+                    )
+                }
             </div>
         </div>
     </nav>
