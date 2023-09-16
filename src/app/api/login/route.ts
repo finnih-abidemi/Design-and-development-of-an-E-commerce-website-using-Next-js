@@ -1,34 +1,44 @@
 import { mongo } from "mongoose";
+import bcrypt from "bcrypt"; // Import the bcrypt library for password verification
 import connect from "@/libs/mongo";
 import UserProfile from "@/models/local_user";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  const { email, password } = await request.json();
-  if (!email || !password) {
-    return NextResponse.json({ message: "Please fill in all fields" });
+  try {
+    const { email, password } = await request.json();
+
+    if (!email || !password) {
+      return NextResponse.json({ message: "Please fill in all fields" });
+    }
+
+    await connect();
+    const user = await UserProfile.findOne({ email });
+
+    if (!user) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
+    }
+
+    // Verify the provided password against the stored hashed password
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return NextResponse.json({ message: "Password is incorrect" }, { status: 401 });
+    }
+
+    if (!user.referralLink) {
+      user.referralLink = `https://prompteasy.co/signup/${user._id}`;
+      await user.save();
+    }
+
+    if (!user.customPrompts) {
+      user.customPrompts = [];
+      await user.save();
+    }
+
+    return NextResponse.json(user, { status: 200 });
+  } catch (error) {
+    console.error("An error occurred:", error);
+    return NextResponse.json({ message: "An error occurred" }, { status: 500 });
   }
-
-  await connect();
-  const user = await UserProfile.findOne({ email });
-
-  if (!user) {
-    return NextResponse.json({ message: "User not found" }, { status: 404 });
-  }
-
-  if (user.password !== password) {
-    return NextResponse.json({ message: "Password is incorrect" }, { status: 401 });
-  }
-
-  if(!user.referralLink) {
-    user.referralLink = `https://prompteasy.co/signup/${user._id}`
-    await user.save();
-  }
-
-  if (!user.customPrompts) {
-    user.customPrompts = [];
-    await user.save();
-  }
-
-  return NextResponse.json(user, { status: 200 });
 }

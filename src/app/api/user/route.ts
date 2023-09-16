@@ -1,11 +1,14 @@
 import { mongo } from "mongoose";
+import bcrypt from "bcrypt"; // Import the bcrypt library for password hashing
 import connect from "@/libs/mongo";
 import UserProfile from "@/models/local_user";
 import { NextResponse } from "next/server";
 
 connect();
+
 export async function POST(request) {
-  const { firstName, lastName, email, password, avatar } = await request.json();
+try{
+  const { firstName, lastName, email, password } = await request.json();
 
   if (!firstName || !lastName || !email || !password) {
     return NextResponse.json({ message: "Please fill in all fields" });
@@ -17,15 +20,21 @@ export async function POST(request) {
     return NextResponse.json({ message: "User with email already exists" }, { status: 401 });
   }
 
+  const saltRounds = 10;
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
+
   const newUser = await UserProfile.create({
     firstName,
     lastName,
     email,
-    password,
-    avatar
+    password: hashedPassword,
   });
 
   return NextResponse.json(newUser, { status: 201 });
+}catch(error){
+  console.error("An error occurred:", error);
+  return NextResponse.json({ message: "An error occurred" }, { status: 500 });
+}
 }
 
 
