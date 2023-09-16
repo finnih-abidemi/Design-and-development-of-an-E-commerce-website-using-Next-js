@@ -34,10 +34,26 @@ const userProfileSchema = new mongoose.Schema(
       {
         orderId: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Order", 
+          ref: "Order",
         },
         date: Date,
         status: String,
+      },
+    ],
+    cartItems: [
+      {
+        productId: {
+          type: String,
+          ref: "Product", // Replace "Product" with the actual model name for products
+        },
+        imagePath: String,
+        name: String,
+        price: Number,
+        stars: Number,
+        // quantity: {
+        //   type: Number,
+        //   default: 1, // You can set a default quantity if needed
+        // },
       },
     ],
   },

@@ -1,11 +1,13 @@
 "use client";
-import { Loading } from "@/components/Loading";
+import { ButtonLoading, Loading } from "@/components/Loading";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Header from "@/components/Header"
 import {  usePathname } from "next/navigation";
 import { UserContext } from "@/context/context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export default function Page({ params }: { params: { productId: string } }) {
@@ -16,13 +18,15 @@ export default function Page({ params }: { params: { productId: string } }) {
     description: string;
   } | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>("S");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isProduct, setIsProduct] = useState(false)
 
-  const { cartItem, setCartItem } = useContext(UserContext);
+  const { cartItem, setCartItem, user } = useContext(UserContext);
+  const [itemQuantity, setItemQuantity] = useState(1);
+
 
   const pathname = usePathname();
   const pathSegments = pathname.split('/');
-
-  console.log(cartItem);
 
 
   const lastSegment = pathSegments[pathSegments.length - 1];
@@ -36,9 +40,13 @@ export default function Page({ params }: { params: { productId: string } }) {
       const products = await response.json();
       const product = products.find(
         (product: any) =>{
-          return product.id == lastSegment
+          return product.productId == lastSegment
         }
       );
+      const checkProduct = cartItem.find((item: any) => item.productId == lastSegment);
+      if(checkProduct){
+        setIsProduct(true);
+      }
       setProduct(product);
     };
     getProduct();
@@ -59,13 +67,32 @@ export default function Page({ params }: { params: { productId: string } }) {
     </div>
   );
 
-  const handleCart = () => {
+  const handleCart = async () => {
+    if(!user){
+      toast.error("Please login to add to cart");
+      return;
+    }
+    setIsLoading(true);
     const newCartItem = [...cartItem];
     newCartItem.push(product);
     setCartItem(newCartItem);
+
+    try{
+      await axios.post('/api/cart', {
+        cartItem: newCartItem,
+        id: user._id
+      });
+      setIsLoading(false);
+      setIsProduct(true);
+      toast.success("Added to cart");
+    }catch(error){
+      setIsLoading(false);
+      toast.error("Something went wrong");
+    }
   }
   return (
     <div>
+      <ToastContainer />
       <Header />
       <>
         <main className="mt-[80px]">
@@ -116,9 +143,35 @@ export default function Page({ params }: { params: { productId: string } }) {
                 <p className="font-bold text-[18px] text-black">
                   $ <span>{product.price}</span>
                 </p>
-                <button onClick={handleCart} className="px-3 py-2 rounded-md bg-gray-700 text-white text-[14px] font-light hover:bg-gray-500">
-                  ADD TO CART{" "}
+                {
+                  isLoading ? (
+                  <button onClick={handleCart} className="px-16 py-2 rounded-md bg-gray-700 text-white text-[14px] font-light hover:bg-gray-500">
+                  <ButtonLoading /> {" "}
                 </button>
+                  ) : (
+                    isProduct ? 
+                    <div className="flex items-center gap-5">
+                    <button
+                    onClick={() => setItemQuantity(itemQuantity - 1)}
+                    className="bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200">
+                      -
+                    </button>
+                    <p className="text-[14px]">{itemQuantity}</p>
+                    <button
+                    onClick={() => setItemQuantity(itemQuantity + 1)}
+                    className="bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200">
+                      +
+                    </button>
+                    <p className="text-[14px] ml-2">
+                    ({itemQuantity} item(s) added)
+                    </p>
+                  </div>
+                    : 
+                    <button onClick={handleCart} className="px-10 py-2 rounded-md bg-gray-700 text-white text-[14px] font-light hover:bg-gray-500">
+                      ADD TO CART
+                    </button>
+                  )
+                }
                 <Image src="/love.svg" alt="star" width={20} height={20} className=" hover:bg-gray-100 cursor-pointer"/>
               </div>
               <div className="flex justify-between mt-10 md:mt-2 gap-4">

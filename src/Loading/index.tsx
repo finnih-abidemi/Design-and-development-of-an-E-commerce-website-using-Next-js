@@ -15,3 +15,12 @@ export const ButtonLoading = () => {
     </div>
   );
 };
+
+
+export const ButtonLoadings = () => {
+  return (
+    <div className="flex items-center justify-center">
+      <div className="animate-spin h-6 w-6 border-t-2 border-b-2 border-black rounded-full"></div>
+    </div>
+  );
+};

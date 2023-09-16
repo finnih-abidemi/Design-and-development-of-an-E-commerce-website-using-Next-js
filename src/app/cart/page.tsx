@@ -1,26 +1,49 @@
-"use client"
+"use client";
 import Image from "next/image";
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { UserContext } from "@/context/context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { ButtonLoading, ButtonLoadings, Loading } from "@/Loading";
 
 const Cart = () => {
-    const [itemQuantity, setItemQuantity] = useState(1);
+  const [itemQuantity, setItemQuantity] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [productLoading, setProductLoading] = useState({}); // Initialize an empty object for product loading states
 
-    const {push} = useRouter()
-    const {cartItem, setCartItem} = useContext(UserContext);
-    
-    const handleRemoveItem = (productName) => {
-        const newCart = cartItem.filter((item) => item.name !== productName);
-        setCartItem(newCart);
+  const { push } = useRouter();
+  const { cartItem, setCartItem, user } = useContext(UserContext);
+
+  const handleRemoveItem = async (productName) => {
+    setProductLoading({ ...productLoading, [productName]: true });
+    const newCart = cartItem.filter((item) => item.name !== productName);
+
+    try {
+      await axios.post("/api/cart", {
+        cartItem: newCart,
+        id: user._id,
+      });
+      setProductLoading({ ...productLoading, [productName]: false });
+      toast.success("Item removed from cart");
+      setCartItem(newCart);
+    } catch (error) {
+      setProductLoading({ ...productLoading, [productName]: false });
+      toast.error("Something went wrong");
     }
+  };
 
-    if(itemQuantity < 1) setItemQuantity(1);
-    
+  if (itemQuantity < 1) setItemQuantity(1);
+
   return (
     <div>
+      <ToastContainer />
       <main className="mt-[120px] ">
-        <header className="flex items-center gap-4 cursor-pointer container">
+        <header
+          className="flex items-center gap-4 cursor-pointer container"
+          onClick={() => push("/")}
+        >
           <Image src={"/back.svg"} width={30} height={30} alt="back" />
           <h1 className="text-[15px]">Back to store</h1>
         </header>
@@ -62,34 +85,56 @@ const Cart = () => {
                       <td className="px-5 py-3">
                         <div className="flex items-center gap-5">
                           <button
-                          onClick={() => setItemQuantity(itemQuantity - 1)}
-                          className="bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200">
+                            onClick={() => setItemQuantity(itemQuantity - 1)}
+                            className="bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200"
+                          >
                             -
                           </button>
                           <p className="text-[14px]">{itemQuantity}</p>
                           <button
-                          onClick={() => setItemQuantity(itemQuantity + 1)}
-                          className="bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200">
+                            onClick={() => setItemQuantity(itemQuantity + 1)}
+                            className="bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200"
+                          >
                             +
                           </button>
                         </div>
                       </td>
-                      <td className="px-5 py-3 relative">$ {(item.price * itemQuantity).toFixed(2)} <Image src={"/cancel.svg"} alt="cancel" width={10} height={20} onClick={() => handleRemoveItem(item.name)} className="absolute right-0 hover:bg-slate-100 p-2 w-[25px] rounded-full cursor-pointer top-[30px]" /> </td>
+                      {productLoading[item.name] ? (
+                        <div className=" mt-10">
+                          <ButtonLoadings />
+                        </div>
+                      ) : (
+                        <td className="px-5 py-3 relative">
+                          $ {(item.price * itemQuantity).toFixed(2)}{" "}
+                          <Image
+                            src={"/cancel.svg"}
+                            alt="cancel"
+                            width={10}
+                            height={20}
+                            onClick={() => handleRemoveItem(item.name)}
+                            className="absolute right-0 hover:bg-slate-100 p-2 w-[25px] rounded-full cursor-pointer top-[30px]"
+                          />{" "}
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
-                </table>         
+              </table>
             </div>
           </div>
           <div className="flex flex-col w-[25%] bg-gray-100 rounded-lg px-3 py-3 h-[80vh] relative mb-10">
             <h3 className="text-xl font-medium">Summary</h3>
             <div className="flex flex-col gap-8 mt-10">
               <div className="flex justify-between">
-                <p className="text-[14px] font-medium text-gray-400">Subtotal</p>
+                <p className="text-[14px] font-medium text-gray-400">
+                  Subtotal
+                </p>
                 <p className="text-[14px] font-medium text-gray-500">$ 300</p>
               </div>
               <div className="flex justify-between">
-                <p className="text-[14px] font-medium text-gray-400">Shipping</p>
+                <p className="text-[14px] font-medium text-gray-400">
+                  Shipping
+                </p>
                 <p className="text-[14px] font-medium text-gray-500">$ 300</p>
               </div>
               <div className="flex justify-between">
@@ -97,11 +142,16 @@ const Cart = () => {
                 <p className="text-[14px] font-medium text-gray-500">$ 300</p>
               </div>
               <div className="absolute bottom-[15px] w-full left-0 px-3">
-              <div className="flex justify-between">
-                <p className="text-[14px] font-medium text-gray-400">Total</p>
-                <p className="text-[14px] font-medium text-gray-500">$ 300</p>
-              </div>
-              <button className="mt-5 bg-gray-700 text-white hover:bg-gray-500 rounded-lg py-3 text-center w-full" onClick={() => push("/checkout")}>Checkout</button>
+                <div className="flex justify-between">
+                  <p className="text-[14px] font-medium text-gray-400">Total</p>
+                  <p className="text-[14px] font-medium text-gray-500">$ 300</p>
+                </div>
+                <button
+                  className="mt-5 bg-gray-700 text-white hover:bg-gray-500 rounded-lg py-3 text-center w-full"
+                  onClick={() => push("/checkout")}
+                >
+                  Checkout
+                </button>
               </div>
             </div>
           </div>

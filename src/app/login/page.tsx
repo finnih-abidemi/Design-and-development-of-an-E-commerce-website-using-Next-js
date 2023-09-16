@@ -11,8 +11,8 @@ import { useRouter } from "next/navigation";
 import { UserContext } from "@/context/context";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@gmail.com");
+  const [password, setPassword] = useState("test");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [responseError, setResponseError] = useState("");
@@ -20,7 +20,7 @@ const Login = () => {
 
   const { push } = useRouter();
 
-  const { setUser } = useContext(UserContext);
+  const { setUser, setCartItem } = useContext(UserContext);
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
@@ -37,11 +37,12 @@ const Login = () => {
       if (response.status === 200) {
         console.log(response.data);
         setUser(response.data);
+        setCartItem(response.data.cartItems)
         setLoading(false);
         toast.success("Sign in successful!");
 
         setTimeout(() => {
-          push("/profile");
+          push("/");
         }, 1000);
       }
     } catch (error) {

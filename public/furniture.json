@@ -1,55 +1,55 @@
 [
     {
-      "id": 1,
+      "productId": 1,
       "name": "Elegant Sofa",
       "price": 499,
       "stars": 4.5,
       "imagePath": "/images/sofa.png"
     },
     {
-      "id": 2,
+      "productId": 2,
       "name": "Modern Dining Table",
       "price": 299,
       "stars": 4.2,
       "imagePath": "/images/dining_table.png"
     },
     {
-      "id": 3,
+      "productId": 3,
       "name": "Comfortable Recliner",
       "price": 349,
       "stars": 4.8,
       "imagePath": "/images/style_sofa.png"
     },
     {
-      "id": 4,
+      "productId": 4,
       "name": "Stylish Coffee Table",
       "price": 199,
       "stars": 4.6,
       "imagePath": "/images/coffee_table.png"
     },
     {
-      "id": 5,
+      "productId": 5,
       "name": "Luxury Bed Frame",
       "price": 599,
       "stars": 4.9,
       "imagePath": "/images/bed_frame.png"
     },
     {
-      "id": 6,
+      "productId": 6,
       "name": "Modern Sofa",
       "price": 379,
       "stars": 4.4,
       "imagePath": "/images/sofas.png"
     },
     {
-      "id": 7,
+      "productId": 7,
       "name": "Modern Desk",
       "price": 249,
       "stars": 4.3,
       "imagePath": "/images/table.png"
     },
     {
-      "id": 8,
+      "productId": 8,
       "name": "Cozy Armchair",
       "price": 299,
       "stars": 4.7,
