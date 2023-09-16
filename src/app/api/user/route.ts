@@ -17,7 +17,7 @@ try{
   const user = await UserProfile.findOne({ email: email });
 
   if (user) {
-    return NextResponse.json({ message: "User with email already exists" }, { status: 401 });
+    return NextResponse.json({ message: "User with email already exists" }, { status: 409 });
   }
 
   const saltRounds = 10;

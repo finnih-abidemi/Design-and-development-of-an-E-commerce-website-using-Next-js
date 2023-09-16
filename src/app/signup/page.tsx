@@ -16,6 +16,7 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [pageLoading, isPageLoading] = useState(true)
+  const [responseError, setResponseError] = useState("")
 
   const { push } = useRouter();
 
@@ -45,10 +46,15 @@ const Signup = () => {
         toast.success("Sign up successful!");
 
         setTimeout(() => {
-          push("/signin");
+          push("/login");
         }, 1000);
       }
     } catch (error) {
+      if(error.response.status === 409){
+        setResponseError("User with email already exist")
+      }else{
+        setResponseError("An error occurred")
+      }
       console.log(error);
       toast.error("Registration failed!");
       setLoading(false);
@@ -113,6 +119,7 @@ const Signup = () => {
                   <span className="hidden h-[1px] w-full max-w-[60px] bg-body-color sm:block"></span>
                 </div>
                 <form>
+                <p className="text-red-600 font-medium text-[14px] text-center mb-3">{responseError}</p>
                   <div className="mb-8">
                     <label
                       htmlFor="name"
@@ -265,7 +272,7 @@ const Signup = () => {
                     {loading ? (
                       <button
                         disabled
-                        className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
+                        className="flex w-full items-center justify-center rounded-md bg-blue-700 py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
                       >
                         <ButtonLoading /> {""}
                       </button>

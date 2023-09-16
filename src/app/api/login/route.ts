@@ -1,5 +1,5 @@
 import { mongo } from "mongoose";
-import bcrypt from "bcrypt"; // Import the bcrypt library for password verification
+import bcrypt from "bcrypt"; 
 import connect from "@/libs/mongo";
 import UserProfile from "@/models/local_user";
 import { NextResponse } from "next/server";

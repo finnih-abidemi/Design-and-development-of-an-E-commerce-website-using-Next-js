@@ -15,12 +15,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [responseError, setResponseError] = useState("");
+
+
   const { push } = useRouter();
 
   const { setUser } = useContext(UserContext);
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
+    setResponseError("");
     if (email === "" || password === "") {
       setError(true);
       return;
@@ -41,7 +45,12 @@ const Login = () => {
         }, 1000);
       }
     } catch (error) {
-      toast.error("Login failed!");
+
+      if(error.response.status === 401){
+        setResponseError("Invalid login");
+      }else{
+        setResponseError("Something went wrong");
+      }
       console.log(error);
       setLoading(false);
     }
@@ -112,6 +121,7 @@ const Login = () => {
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color sm:block"></span>
                 </div>
                 <form>
+                  <p className="text-red-600 font-medium text-[14px] text-center mb-3">{responseError}</p>
                   <div className="mb-8">
                     <label
                       htmlFor="email"
@@ -125,7 +135,8 @@ const Login = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your Email"
-                      className={`w-full rounded-md border ${
+                      className={`w-full rounded-md border
+                      ${
                         error && email === ""
                           ? "border-[#e94949]"
                           : "border-transparent"
@@ -209,7 +220,7 @@ const Login = () => {
                     {loading ? (
                       <button
                         disabled
-                        className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
+                        className="flex w-full items-center justify-center rounded-md bg-blue-700 py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
                       >
                         <ButtonLoading /> {""}
                       </button>
