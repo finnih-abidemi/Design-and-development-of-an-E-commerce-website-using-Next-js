@@ -44,16 +44,12 @@ const userProfileSchema = new mongoose.Schema(
       {
         productId: {
           type: String,
-          ref: "Product", // Replace "Product" with the actual model name for products
+          ref: "Product", 
         },
         imagePath: String,
         name: String,
         price: Number,
         stars: Number,
-        // quantity: {
-        //   type: Number,
-        //   default: 1, // You can set a default quantity if needed
-        // },
       },
     ],
   },
