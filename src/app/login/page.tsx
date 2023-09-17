@@ -40,6 +40,7 @@ const Login = () => {
         setCartItem(response.data.cartItems)
         setLoading(false);
         toast.success("Sign in successful!");
+        localStorage.setItem("Alloy_user", JSON.stringify(response.data));
 
         setTimeout(() => {
           push("/");

@@ -19,7 +19,6 @@ export async function POST(request) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
-    // Verify the provided password against the stored hashed password
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
@@ -36,7 +35,16 @@ export async function POST(request) {
       await user.save();
     }
 
-    return NextResponse.json(user, { status: 200 });
+    const newUser = {
+      _id: user._id,
+     firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      orderHistory: user.orderHistory,
+      cartItems: user.cartItems,
+    }
+
+    return NextResponse.json(newUser, { status: 200 });
   } catch (error) {
     console.error("An error occurred:", error);
     return NextResponse.json({ message: "An error occurred" }, { status: 500 });
