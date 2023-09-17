@@ -1,8 +1,10 @@
 "use client";
 import React, {useState} from "react";
 import { useRouter } from "next/navigation";
+import { UserContext } from '@/context/context'
 
 const Checkout = () => {
+  const {user} = React.useContext(UserContext)
   const { push } = useRouter();
   const [proceedToShipping, setProceedToShipping] = useState(false);
   const [proceedToPayment, setProceedToPayment] = useState(false);
@@ -120,7 +122,9 @@ const Checkout = () => {
               type="text"
               name="email"
               id="email"
-              className="border-b-2 placeholder:text-[14px] outline-none rounded-[5px] h-[40px] px-[10px] mt-[10px]"
+              value={user?.email}
+              disabled
+              className="border-b-2 placeholder:text-[14px] text-[13.5px] text-gray-400 outline-none rounded-[5px] h-[40px] px-[10px] mt-[10px]"
               placeholder="Enter your email address"
             />
           </div>
@@ -133,7 +137,8 @@ const Checkout = () => {
                 type="text"
                 name="firstName"
                 id="firstName"
-                className="border-b-2 placeholder:text-[14px] outline-none rounded-[5px] h-[40px] px-[10px] mt-[10px]"
+                value={user?.firstName}
+                className="border-b-2 placeholder:text-[14px] capitalize outline-none rounded-[5px] h-[40px] px-[10px] mt-[10px]"
                 placeholder="Enter your first name"
               />
             </div>
@@ -145,7 +150,8 @@ const Checkout = () => {
                 type="text"
                 name="lastName"
                 id="lastName"
-                className="border-b-2 placeholder:text-[14px] outline-none rounded-[5px] h-[40px] px-[10px] mt-[10px]"
+                value={user?.lastName}
+                className="border-b-2 placeholder:text-[14px] capitalize outline-none rounded-[5px] h-[40px] px-[10px] mt-[10px]"
                 placeholder="Enter your last name"
               />
             </div>

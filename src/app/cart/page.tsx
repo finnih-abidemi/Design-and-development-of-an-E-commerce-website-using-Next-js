@@ -129,22 +129,35 @@ const Cart = () => {
                 <p className="text-[14px] font-medium text-gray-400">
                   Subtotal
                 </p>
-                <p className="text-[14px] font-medium text-gray-500">$ 300</p>
+                <p className="text-[14px] font-medium text-gray-500">$ {
+                  cartItem.reduce(
+                    (acc, item) => acc + item.price * itemQuantity,
+                    0
+                  ) || 0
+                }</p>
               </div>
               <div className="flex justify-between">
                 <p className="text-[14px] font-medium text-gray-400">
                   Shipping
                 </p>
-                <p className="text-[14px] font-medium text-gray-500">$ 300</p>
+                <p className="text-[14px] font-medium text-gray-500">$ {
+                 0
+                }</p>
               </div>
               <div className="flex justify-between">
                 <p className="text-[14px] font-medium text-gray-400">Tax</p>
-                <p className="text-[14px] font-medium text-gray-500">$ 300</p>
+                <p className="text-[14px] font-medium text-gray-500">$ 0</p>
               </div>
               <div className="absolute bottom-[15px] w-full left-0 px-3">
                 <div className="flex justify-between">
                   <p className="text-[14px] font-medium text-gray-400">Total</p>
-                  <p className="text-[14px] font-medium text-gray-500">$ 300</p>
+                  <p className="text-[14px] font-medium text-gray-500">$ {
+                     cartItem.reduce(
+                      (acc, item) => acc + item.price * itemQuantity,
+                      0
+                    ) || 0
+                     }
+                  </p>
                 </div>
                 <button
                   className="mt-5 bg-gray-700 text-white hover:bg-gray-500 rounded-lg py-3 text-center w-full"
