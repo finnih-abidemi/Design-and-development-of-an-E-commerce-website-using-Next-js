@@ -6,12 +6,11 @@ import { UserContext } from "@/context/context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { ButtonLoading, ButtonLoadings, Loading } from "@/Loading";
+import { ButtonLoadings } from "@/Loading";
 
 const Cart = () => {
   const [itemQuantity, setItemQuantity] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [productLoading, setProductLoading] = useState({}); // Initialize an empty object for product loading states
+  const [productLoading, setProductLoading] = useState({});
 
   const { push } = useRouter();
   const { cartItem, setCartItem, user } = useContext(UserContext);
@@ -129,20 +128,19 @@ const Cart = () => {
                 <p className="text-[14px] font-medium text-gray-400">
                   Subtotal
                 </p>
-                <p className="text-[14px] font-medium text-gray-500">$ {
-                  cartItem.reduce(
+                <p className="text-[14px] font-medium text-gray-500">
+                  ${" "}
+                  {cartItem.reduce(
                     (acc, item) => acc + item.price * itemQuantity,
                     0
-                  ) || 0
-                }</p>
+                  ) || 0}
+                </p>
               </div>
               <div className="flex justify-between">
                 <p className="text-[14px] font-medium text-gray-400">
                   Shipping
                 </p>
-                <p className="text-[14px] font-medium text-gray-500">$ {
-                 0
-                }</p>
+                <p className="text-[14px] font-medium text-gray-500">$ {0}</p>
               </div>
               <div className="flex justify-between">
                 <p className="text-[14px] font-medium text-gray-400">Tax</p>
@@ -151,12 +149,12 @@ const Cart = () => {
               <div className="absolute bottom-[15px] w-full left-0 px-3">
                 <div className="flex justify-between">
                   <p className="text-[14px] font-medium text-gray-400">Total</p>
-                  <p className="text-[14px] font-medium text-gray-500">$ {
-                     cartItem.reduce(
+                  <p className="text-[14px] font-medium text-gray-500">
+                    ${" "}
+                    {cartItem.reduce(
                       (acc, item) => acc + item.price * itemQuantity,
                       0
-                    ) || 0
-                     }
+                    ) || 0}
                   </p>
                 </div>
                 <button

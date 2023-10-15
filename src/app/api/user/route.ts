@@ -11,7 +11,7 @@ try{
   const { firstName, lastName, email, password } = await request.json();
   // Check for missing fields
   if (!firstName || !lastName || !email || !password) {
-    return NextResponse.json({ message: "Please fill in all fields" });
+    return NextResponse.json({ message: "Please fill in all fields" }, { status: 400 });
   }
   const user = await UserProfile.findOne({ email: email }); // Find user in database
   // Check if user exists
@@ -29,7 +29,7 @@ try{
     password: hashedPassword,
   });
   // Return new user
-  return NextResponse.json({ status: 201 });
+  return NextResponse.json({message: "User created successfully"},{ status: 201 });
 }catch(error){
   console.error("An error occurred:", error);
   return NextResponse.json({ message: "An error occurred" }, { status: 500 });

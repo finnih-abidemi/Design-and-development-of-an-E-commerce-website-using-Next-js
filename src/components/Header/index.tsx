@@ -32,7 +32,7 @@ const Header = () => {
             <Image src={'/search.svg'} width={20} height={20} alt="search" className='absolute right-[20px] top-[25%] cursor-pointer'  />
             <input type="text" placeholder='What are you looking for...' className='border w-[400px] rounded-md border-gray-300 px-3 py-2 text-sm focus:outline-none focus:border-gray-400' onKeyPress={handleSearch} value={searchQuery} onChange={e => setSearchQuery(e.target.value)}/>
             </div>
-            <div className="flex gap-2 relative  hover:bg-gray-200 rounded-md cursor-pointer px-3" onClick={handleLogin} onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false) } >
+            <div className="flex gap-2 items-center relative  hover:bg-gray-200 rounded-md cursor-pointer px-3" onClick={handleLogin} onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false) } >
                 <Image src={'/user.svg'} width={20} height={20} alt="user" />
                 <p className='text-[14px] capitalize'>
                     {
@@ -60,7 +60,7 @@ const Header = () => {
                 <Image src={'/help.svg'} width={20} height={20} alt="cart" />
                 <p className='text-[14px]'>Help</p>
             </div> */}
-            <div className="flex relative gap-2  hover:bg-gray-200 rounded-md cursor-pointer px-3"  onClick={() => push("/cart")}>
+            <div className="flex relative items-center gap-2  hover:bg-gray-200 rounded-md cursor-pointer px-3"  onClick={() => push("/cart")}>
                 <Image src={'/cart.svg'} width={20} height={20} alt="cart" />
                 <p className='text-[14px]'>Cart</p>
                 {
