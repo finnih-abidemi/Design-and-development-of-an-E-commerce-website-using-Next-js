@@ -11,7 +11,7 @@
   },
   {
     "productId": 18,
-    "name": "Casual Summer Blouse",
+    "name": "Casual Summer Pant",
     "colors": ["White", "Blue Stripes", "Pink"],
     "sizes": ["S", "M", "L"],
     "price": 39.99,
@@ -21,7 +21,7 @@
   },
   {
     "productId": 19,
-    "name": "Classic Trench Coat",
+    "name": "Classic Woolen Cloth",
     "colors": ["Beige", "Navy Blue", "Khaki"],
     "sizes": ["S", "M", "L", "XL"],
     "price": 129.99,
@@ -31,7 +31,7 @@
   },
   {
     "productId": 20,
-    "name": "Denim Skinny Jeans",
+    "name": "Denim Night Pant",
     "colors": ["Blue", "Black"],
     "sizes": ["26W x 30L", "28W x 32L", "30W x 32L", "32W x 34L"],
     "price": 69.99,
@@ -41,7 +41,7 @@
   },
   {
     "productId": 21,
-    "name": "Fashionable Sun Hat",
+    "name": "Fashionable Long Sleeve",
     "colors": ["Beige", "Black", "Brown"],
     "sizes": ["One Size"],
     "price": 19.99,
@@ -51,7 +51,7 @@
   },
   {
     "productId": 22,
-    "name": "Comfortable Sandals",
+    "name": "Comfortable Pant",
     "colors": ["Brown", "Black", "White"],
     "sizes": ["5", "6", "7", "8", "9"],
     "price": 49.99,
@@ -61,7 +61,7 @@
   },
   {
     "productId": 23,
-    "name": "Chic Handbag",
+    "name": "Clerk Night Pant",
     "colors": ["Red", "Black", "Beige"],
     "sizes": ["One Size"],
     "price": 59.99,
@@ -71,7 +71,7 @@
   },
   {
     "productId": 24,
-    "name": "Statement Necklace",
+    "name": "Round Neck",
     "colors": ["Gold", "Silver", "Rose Gold"],
     "sizes": ["One Size"],
     "price": 29.99,

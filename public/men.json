@@ -1,7 +1,7 @@
 [
   {
     "productId": 9,
-    "name": "Classic Blue Suit",
+    "name": "Classic Suit Pant",
     "colors": ["Navy Blue", "Charcoal Gray", "Black"],
     "sizes": ["S", "M", "L", "XL"],
     "price": 299.99,
@@ -11,7 +11,7 @@
   },
   {
     "productId": 10,
-    "name": "Slim Fit White Shirt",
+    "name": "Casual Hoodie",
     "colors": ["White"],
     "sizes": ["S", "M", "L", "XL"],
     "price": 49.99,
@@ -31,7 +31,7 @@
   },
   {
     "productId": 12,
-    "name": "Casual Jeans",
+    "name": "Casual head Warmer",
     "colors": ["Blue", "Black", "Gray"],
     "sizes": ["28W x 30L", "32W x 32L", "34W x 32L"],
     "price": 69.99,
@@ -41,7 +41,7 @@
   },
   {
     "productId": 13,
-    "name": "Striped Necktie",
+    "name": "Silk Hoodie",
     "colors": ["Navy Blue/White", "Red/Black", "Green/Yellow"],
     "sizes": ["One Size"],
     "price": 19.99,
@@ -51,7 +51,7 @@
   },
   {
     "productId": 14,
-    "name": "Dress Shoes",
+    "name": "Gradient Shirt",
     "colors": ["Black", "Brown", "Tan"],
     "sizes": ["8", "9", "10", "11"],
     "price": 89.99,
@@ -61,7 +61,7 @@
   },
   {
     "productId": 15,
-    "name": "Polo Shirt",
+    "name": "Skinny Pant",
     "colors": ["Blue", "Red", "White", "Green"],
     "sizes": ["S", "M", "L", "XL"],
     "price": 29.99,
@@ -71,7 +71,7 @@
   },
   {
     "productId": 16,
-    "name": "Sweater Vest",
+    "name": "Pant",
     "colors": ["Gray", "Navy Blue", "Burgundy"],
     "sizes": ["S", "M", "L", "XL"],
     "price": 39.99,
