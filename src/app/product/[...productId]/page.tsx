@@ -114,15 +114,15 @@ export default function Page({ params }: { params: { productId: string } }) {
               </div>
             </div>
           </section>
-          <section className="container flex gap-10 mt-4">
-            <div className="flex w-[50%] bg-gray-200 h-[600px]">
+          <section className="container flex md:flex-row flex-col gap-10 mt-7 md:mt-4">
+            <div className="flex md:w-[50%] bg-gray-200 h-[400px] md:h-[600px]">
             <Image src={product.imagePath} alt="sofa" width={1000} height={1000}  />
             </div>
-            <div className="flex w-[50%] flex-col">
+            <div className="flex md:w-[50%] flex-col">
               <p className="text-[14px]">
                 COLOR: <span className=" ml-2 font-bold">Blue</span>
               </p>
-              <div className="flex gap-3 mt-2">
+              <div className="flex flex-wrap gap-3 mt-2">
                 <Image src={product.imagePath} alt="sofa" width={100} height={100} />
                 <Image src={product.imagePath} alt="sofa" width={100} height={100} />
                 <Image src={product.imagePath} alt="sofa" width={100} height={100} />
@@ -178,7 +178,7 @@ export default function Page({ params }: { params: { productId: string } }) {
                 <div className="flex gap-3">
                   <Image src="/ship.svg" width={25} height={25} alt="ship" />
                   <div className="text-left flex items-center md:flex-col flex-row md:items-start">
-                    <p className="md:text-[12px] invisible md:visible">
+                    <p className="md:text-[12px] text-[10px] ">
                       Free shipping on all order or order above $99
                     </p>
                   </div>
@@ -186,7 +186,7 @@ export default function Page({ params }: { params: { productId: string } }) {
                 <div className="flex gap-3">
                   <Image src="/refresh.svg" width={25} height={25} alt="ship" />
                   <div className="text-left flex items-center md:flex-col flex-row md:items-start">
-                    <p className="md:text-[12px] invisible md:visible">
+                    <p className="md:text-[12px] text-[10px]">
                       Simply return it within 30 days for an exchange
                     </p>
                   </div>
@@ -194,7 +194,7 @@ export default function Page({ params }: { params: { productId: string } }) {
                 <div className="flex gap-3">
                   <Image src="/support.svg" width={25} height={25} alt="ship" />
                   <div className="text-left flex items-center md:flex-col flex-row md:items-start">
-                    <p className="md:text-[12px] invisible md:visible">
+                    <p className="md:text-[12px] text-[10px]">
                       Contact us 24 hours a day, 7 days a week
                     </p>
                   </div>
