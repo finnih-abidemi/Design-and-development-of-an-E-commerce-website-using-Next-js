@@ -46,8 +46,8 @@ const Cart = () => {
           <Image src={"/back.svg"} width={30} height={30} alt="back" />
           <h1 className="text-[15px]">Back to store</h1>
         </header>
-        <section className="w-full flex gap-10 mt-10 container">
-          <div className="flex w-[75%] flex-col gap-10">
+        <section className="w-full flex md:flex-row flex-col gap-10 mt-10 container">
+          <div className="flex md:w-[75%] flex-col gap-10">
             <div className="flex justify-between items-center  w-full">
               <h2 className="text-4xl font-bold">Shopping cart</h2>
               <p className="text-[14px]">{cartItem.length} items</p>
@@ -66,7 +66,7 @@ const Cart = () => {
                   {cartItem.map((item: any) => (
                     <tr className="text-[14px] text-gray-400" key={item.name}>
                       <td className="px-5 py-3">
-                        <div className="flex gap-5">
+                        <div className="flex gap-5 md:w-fit w-[30px]">
                           <Image
                             src={item.imagePath}
                             alt="sofa"
@@ -74,25 +74,25 @@ const Cart = () => {
                             height={60}
                           />
                           <div className="flex flex-col">
-                            <h3 className="font-bold">{item.name}</h3>
-                            <p className="text-[14px]">Color: Blue</p>
-                            <p className="text-[14px]">Size: M</p>
+                            <h3 className="font-bold md:text-[14px] text-[12px]">{item.name}</h3>
+                            <p className="text-[14px] md:flex hidden">Color: Blue</p>
+                            <p className="text-[14px] md:flex hidden">Size: M</p>
                           </div>
                         </div>
                       </td>
                       <td className="px-5 py-3">$ {item.price}</td>
-                      <td className="px-5 py-3">
-                        <div className="flex items-center gap-5">
+                      <td className="md:px-5 py-3">
+                        <div className="flex items-center gap-3 md:gap-5">
                           <button
                             onClick={() => setItemQuantity(itemQuantity - 1)}
-                            className="bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200"
+                            className="bg-gray-100 px-1 md:px-3 md:py-2 rounded-lg hover:bg-gray-200"
                           >
                             -
                           </button>
                           <p className="text-[14px]">{itemQuantity}</p>
                           <button
                             onClick={() => setItemQuantity(itemQuantity + 1)}
-                            className="bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200"
+                            className="bg-gray-100 px-1 md:px-3 md:py-2 rounded-lg hover:bg-gray-200"
                           >
                             +
                           </button>
@@ -111,7 +111,7 @@ const Cart = () => {
                             width={10}
                             height={20}
                             onClick={() => handleRemoveItem(item.name)}
-                            className="absolute right-0 hover:bg-slate-100 p-2 w-[25px] rounded-full cursor-pointer top-[30px]"
+                            className="absolute right-0 hover:bg-slate-100 p-2 w-[25px] rounded-full cursor-pointer top-[24px]"
                           />{" "}
                         </td>
                       )}
@@ -121,7 +121,7 @@ const Cart = () => {
               </table>
             </div>
           </div>
-          <div className="flex flex-col w-[25%] bg-gray-100 rounded-lg px-3 py-3 h-[80vh] relative mb-10">
+          <div className="flex flex-col md:w-[25%] bg-gray-100 rounded-lg px-3 py-3 h-[40vh] md:h-[80vh] relative mb-10">
             <h3 className="text-xl font-medium">Summary</h3>
             <div className="flex flex-col gap-8 mt-10">
               <div className="flex justify-between">
