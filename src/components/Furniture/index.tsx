@@ -83,8 +83,8 @@ const Furniture = ({title, data}) => {
   };
 
   const visualizeContent = () => (
-    <div className="">
-      <div className="flex justify-between items-center">
+    <div className="container max-w-7xl overflow-hidden">
+      <div className="flex justify-between  items-center">
         <h1 className="text-[20px] font-bold text-gray-700">{title}</h1>
         <div className="invisible md:visible">
           <ul className="listed flex w-fit items-center justify-center gap-3 rounded-3xl px-5 py-2">

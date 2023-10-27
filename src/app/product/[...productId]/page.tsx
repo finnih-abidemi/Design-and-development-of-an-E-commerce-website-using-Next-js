@@ -98,7 +98,7 @@ export default function Page({ params }: { params: { productId: string } }) {
         <main className="mt-[80px]">
           <section className=" px-10 w-full bg-gray-100 pt-6 h-[100px] text-center ">
             <h2 className="text-[30px] font-bold">{product.name}</h2>
-            <div className="flex justify-between">
+            <div className="flex md:mt-0 mt-2 justify-between">
               <div className="flex">
                 <Image src="/star.svg" alt="star" width={20} height={20} />
                 <Image src="/star.svg" alt="star" width={20} height={20} />
